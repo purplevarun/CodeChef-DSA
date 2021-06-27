@@ -9,4 +9,5 @@ int32_t main () {
 			return 0;
 		cout << X << endl;
 	}
+	
 }
