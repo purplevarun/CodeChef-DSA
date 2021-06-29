@@ -12,24 +12,24 @@ void Onigiri() {
 		sum1 += A[i];
 		sum2 += A[N-i-1];
 		prefixSum[i] = sum1;
-		suffixSum[i] = sum2;
+		suffixSum[N-i-1] = sum2;
 	}
-	reverse (suffixSum, suffixSum + N);
 	int Sum[N];
 	for (int i=0;i<N;++i){
 		Sum[i] = prefixSum[i] + suffixSum[i];
 	}
-	/* for (int i:prefixSum) cout << i << ", "; cout << endl; */
-	/* for (int i:suffixSum) cout << i << ", "; cout << endl; */
+	
 	int val = *min_element(Sum, Sum + N);
 	for (int i=0;i<N;++i){
 		if (Sum[i] == val){
-			cout << i + 1 << endl;
+			cout << i + 1 << "\n";
 			return;
 		}
 	}
 }
 int32_t main () {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 	int t = 1;
 	cin >> t;
 	while (t--){
