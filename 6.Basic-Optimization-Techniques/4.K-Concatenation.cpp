@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #define int int64_t
 using namespace std;
-int Kadane (vector<int> A, int N) {
+int Kadane (int A[], int N) {
 	int currentSum = 0, maxSum = -1e9;
 	for (int i=0;i<N;++i){
 		currentSum += A[i];
@@ -10,18 +10,28 @@ int Kadane (vector<int> A, int N) {
 	}
 	return maxSum;
 }
-void onigiri() {
+int onigiri() {
 	int N, K; cin >> N >> K;
 	int A[N];
-	for (int i=0;i<N;++i)
+	int Sum = 0;
+	for (int i=0;i<N;++i){
 		cin >> A[i];
-	vector <int> B;
-	for (int k=0;k<min(K,(int)1e3);++k){
-		for (int i=0;i<N;++i){
-			B.push_back(A[i]);
+		Sum += A[i];
+	}
+	if (K == 1){
+		return Kadane(A, N);
+	}
+	int B[N*2];
+	for (int i=0;i<2;++i){
+		for (int j=0;j<N;++j){
+			B[i*N+j] = A[j];
 		}
 	}
-	cout << Kadane (B, N*K) << endl;
+
+	if (Sum < 0)
+		return Kadane(B, N*2);
+	else
+		return Kadane(B, N*2) + (K-2) * Sum;
 }
 int32_t main () {
 	ios_base::sync_with_stdio(0);
@@ -29,6 +39,6 @@ int32_t main () {
 	int t = 1;
 	cin >> t;
 	while (t--){
-		onigiri ();
+		cout << onigiri () << endl;
 	}
 }
