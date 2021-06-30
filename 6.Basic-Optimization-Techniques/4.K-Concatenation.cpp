@@ -1,33 +1,27 @@
 #include <bits/stdc++.h>
 #define int int64_t
 using namespace std;
-bool hasNegative (int A[], int N){
+int Kadane (vector<int> A, int N) {
+	int currentSum = 0, maxSum = -1e9;
 	for (int i=0;i<N;++i){
-		if (A[i] < 0)
-			return true;
+		currentSum += A[i];
+		maxSum = max (maxSum, currentSum);
+		if (currentSum < 0) currentSum = 0;
 	}
-	return false;
+	return maxSum;
 }
 void onigiri() {
 	int N, K; cin >> N >> K;
 	int A[N];
 	for (int i=0;i<N;++i)
 		cin >> A[i];
-	if (!hasNegative(A, N)){
-		cout << K * accumulate (A, A + N, 0) << endl;
-	}
-	else {
-		if (K%2 == 0){
-			K = 2;
-		}
-		else {
-			K = 3;
-		}
-		int B[N*K];
-		for (int k=0;k<K;++k){
-			
+	vector <int> B;
+	for (int k=0;k<min(K,(int)1e3);++k){
+		for (int i=0;i<N;++i){
+			B.push_back(A[i]);
 		}
 	}
+	cout << Kadane (B, N*K) << endl;
 }
 int32_t main () {
 	ios_base::sync_with_stdio(0);
