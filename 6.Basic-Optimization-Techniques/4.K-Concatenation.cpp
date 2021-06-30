@@ -21,6 +21,7 @@ int onigiri() {
 	if (K == 1){
 		return Kadane(A, N);
 	}
+	// B is just A appended with A
 	int B[N*2];
 	for (int i=0;i<2;++i){
 		for (int j=0;j<N;++j){
@@ -31,6 +32,7 @@ int onigiri() {
 	if (Sum < 0)
 		return Kadane(B, N*2);
 	else
+		// split K arrays into 2(1 at start and 1 at end) and K-2(in between them)
 		return Kadane(B, N*2) + (K-2) * Sum;
 }
 int32_t main () {
