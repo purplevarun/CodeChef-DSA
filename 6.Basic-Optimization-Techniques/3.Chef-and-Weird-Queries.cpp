@@ -4,7 +4,7 @@ using namespace std;
 void onigiri() {
 	int x; cin >> x;
 	int cnt = 0;
-	for (int i=1;i<=700 && i < x; i++){
+	for (int i=1;i<=min(x, (int)700); i++){
 		cnt += sqrt(x - i);
 	}
 	cout << cnt << '\n';
