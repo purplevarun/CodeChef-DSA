@@ -4,7 +4,12 @@ using namespace std;
 void onigiri() {
 	int K, A, B;
 	cin >> K >> A >> B;
-	
+	int Sum = (A + B) % 10;
+	K = K%4;
+	for (int i=0;i<K;++i){
+		int temp = Sum;
+
+	}
 }
 int32_t main () {
 	ios_base::sync_with_stdio(0);
