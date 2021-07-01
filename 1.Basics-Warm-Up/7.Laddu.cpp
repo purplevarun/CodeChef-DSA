@@ -27,7 +27,6 @@ void onigiri() {
 			laddus += 50;
 		}
 	}
-	//cout << laddus << endl;
 	if (org == "INDIAN"){
 		cout << laddus/200 << endl;
 	}
