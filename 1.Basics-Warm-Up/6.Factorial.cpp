@@ -2,8 +2,7 @@
 #define int int64_t
 using namespace std;
 void onigiri() {
-	int N;
-	cin >> N;
+	int N; cin >> N;
 	int cnt = 0;
 	while (N/5 > 0){
 		cnt += N/5;
