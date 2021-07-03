@@ -25,8 +25,10 @@ void onigiri() {
 			Ans.push_back (ch);
 		}
 		else {
+			// If Opening Bracket, Push to stack
 			if (ch == '(')
 				st.push(ch);
+			// If Closing Bracket, Output Stack elements till Opening Bracket is encountered
 			else if (ch == ')'){
 				while (st.top() != '('){
 					Ans.push_back(st.top());
@@ -34,15 +36,19 @@ void onigiri() {
 				}
 				st.pop();
 			}
-			else { // operator
+			// If Operator
+			else {
+				// If Precedence of Current Operator is Less than equal to Operator at the top of stack
 				while (st.empty()==false && precedence(ch) <= precedence(st.top())){
 					Ans.push_back(st.top());
 					st.pop();
 				}
+				// push the operator into stack
 				st.push(ch);
 			}
 		}
 	}
+	// empty the stack
 	while (st.empty() == false){
 		Ans.push_back(st.top());
 		st.pop();
