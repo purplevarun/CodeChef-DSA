@@ -17,7 +17,11 @@ int precedence (char ch){
 void onigiri() {
 	cin >> N >> S;
 	stack <char> st;
-			
+	string Ans = "";
+
+	for (char ch : S){
+		
+	}
 }
 int32_t main () {
 	ios_base::sync_with_stdio(0);
