@@ -5,10 +5,8 @@ int N;
 string S;
 int precedence (char ch){
 	if (ch == '^')
-		return 5;
-	else if (ch == '/')
 		return 4;
-	else if (ch == '*')
+	else if (ch == '/' || ch == '*')
 		return 3;
 	else if (ch == '+' || ch == '-')
 		return 2;
