@@ -20,8 +20,34 @@ void onigiri() {
 	string Ans = "";
 
 	for (char ch : S){
-		
+		//If Operand, then directly output the character
+		if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9')){
+			Ans.push_back (ch);
+		}
+		else {
+			if (ch == '(')
+				st.push(ch);
+			else if (ch == ')'){
+				while (st.top() != '('){
+					Ans.push_back(st.top());
+					st.pop();
+				}
+				st.pop();
+			}
+			else { // operator
+				while (st.empty()==false && precedence(ch) <= precedence(st.top())){
+					Ans.push_back(st.top());
+					st.pop();
+				}
+				st.push(ch);
+			}
+		}
 	}
+	while (st.empty() == false){
+		Ans.push_back(st.top());
+		st.pop();
+	}
+	cout << Ans << '\n';
 }
 int32_t main () {
 	ios_base::sync_with_stdio(0);
