@@ -9,10 +9,20 @@ void Onigiri () {
 	for (int i=0;i<N;++i) 
 		cin >> A[i];
 	stack <pair <int, int>> st;
+	int idx;
+	int Ans = 1;
 	for (int i=0;i<N;++i){
-		
-		st.push ({A[i], i+1});
+		idx = i + 1;
+		if (!st.empty()){
+			while (A[i] < st.top().first){
+				Ans *= (idx - st.top().second + 1);
+				Ans %= mod;
+				st.pop();
+			}
+		}
+		st.push ({A[i], idx});
 	}
+	cout << Ans << '\n';
 }
 int32_t main (){
 	#ifndef VarunDebug
