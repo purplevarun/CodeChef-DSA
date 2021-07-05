@@ -2,25 +2,21 @@
 #define int int64_t
 using namespace std;
 const int mod = 1e9 + 7;
-int N, K;
-int A[1000007];
 void Onigiri () {
+	int N, K;
 	cin >> N >> K;
+	int A[N];
 	for (int i=0;i<N;++i) 
 		cin >> A[i];
 	stack <pair <int, int>> st;
-	int idx;
 	int Ans = 1;
 	for (int i=0;i<N;++i){
-		idx = i + 1;
-		if (!st.empty()){
-			while (A[i] < st.top().first){
-				Ans *= (idx - st.top().second + 1);
-				Ans %= mod;
-				st.pop();
-			}
+		while (!st.empty() && A[i] < st.top().first){
+			Ans *= (i - st.top().second + 1);
+			Ans %= mod;
+			st.pop();
 		}
-		st.push ({A[i], idx});
+		st.push ({A[i], i});
 	}
 	cout << Ans << '\n';
 }
