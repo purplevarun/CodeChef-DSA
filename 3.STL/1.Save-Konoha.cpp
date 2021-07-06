@@ -10,22 +10,13 @@ void dbg (auto S){
 void Onigiri () {
 	int N, Z; cin >> N >> Z;
 	int A[N];
-	set<int, greater<int>> S;
-	for (int i=0;i<N;++i){
+	for (int i=0;i<N;++i)
 		cin >> A[i];
-		S.insert (A[i]);
-	}
 	int cntr = 0;
-	while (Z > 0 && *S.begin() > 0){
-		cntr++;
-		int curr = *S.begin();
-		// printf ("Z = %lld and curr = %lld\n", Z, curr);
-		// dbg (S);
-		Z -= curr;
-		S.erase(S.begin());
-		S.insert (curr/2);
-	}
-	cout << cntr << '\n';
+	multiset <int> dp;
+	for (int i=0;i<N;++i)
+		dp.insert (A[i]);
+	
 
 }
 int32_t main (){
