@@ -64,7 +64,7 @@ int32_t main (){
 	cin.tie(0); cout.tie(0);
 	#endif
 
-	int t = 1;
+	int t = 1; 
 	//cin >> t;
 
 	for (int i=0;i<t;++i)
